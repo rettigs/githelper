@@ -12,10 +12,11 @@ if __name__ == '__main__':
     argmap = dict(
         a="git add -A",
         c="git commit -v",
-        s="git stash --include-untracked",
-        r="git fetch && git rebase remotes/origin/`git rev-parse --abbrev-ref HEAD`",
-        p="git push",
         f="git push --force-with-lease",
+        l="git reflog",
+        p="git push",
+        r="git fetch && git rebase remotes/origin/`git rev-parse --abbrev-ref HEAD`",
+        s="git stash --include-untracked",
         t="git push --tags"
     )
 
