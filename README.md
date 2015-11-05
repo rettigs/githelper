@@ -1,6 +1,11 @@
-Githelper: a simple Python script to shorten Git operations even better than bash aliases can.
+Githelper: a simple Python script to shorten Git operations even better than
+bash aliases can.
 
-Rather than `git add -A`, do `g a`! Did you also want to `git commit` and then `git push`? Do `g acp`!
+Rather than `git add -A`, do `g a`! Did you also want to `git commit` and then
+`git push`? Do `g acp`! Mix and match the letters until you get the operations
+you want, and they will be run in order.
+
+Also yells at you if you accidentally try to force push to the master branch.
 
 Aliases:
 ```
