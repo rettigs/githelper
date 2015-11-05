@@ -11,6 +11,9 @@ using the `f` option.
 You can also add args to the end of the command as long as you're only doing
 one operation, e.g. `g p --force`.
 
+Also runs the included `git-branch-tracker` script when you push a new branch
+to set that branch as your new upstream (to make `git pull` work).
+
 Aliases:
 ```
 a: git add -A
@@ -26,6 +29,7 @@ To use, clone this repo:
 ```
 cd
 git clone git@github.com:rettigs/githelper.git
+git config --global push.default current # Recommended, but be careful about pushing without this
 ```
 Then put this in your `~/.bashrc`: (if you're using bash)
 ```
