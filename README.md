@@ -7,6 +7,9 @@ you want, and they will be run in order.
 
 Also yells at you if you accidentally try to force push to the master branch.
 
+You can also add args to the end of the command as long as you're only doing
+one operation, e.g. `g p --force`.
+
 Aliases:
 ```
 a: git add -A
