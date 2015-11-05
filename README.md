@@ -5,7 +5,8 @@ Rather than `git add -A`, do `g a`! Did you also want to `git commit` and then
 `git push`? Do `g acp`! Mix and match the letters until you get the operations
 you want, and they will be run in order.
 
-Also yells at you if you accidentally try to force push to the master branch.
+Also yells at you if you accidentally try to force push to the master branch
+using the `f` option.
 
 You can also add args to the end of the command as long as you're only doing
 one operation, e.g. `g p --force`.
