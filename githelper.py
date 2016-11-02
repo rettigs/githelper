@@ -43,4 +43,4 @@ if __name__ == '__main__':
                 exit()
             # If we did a push, run the branch tracker to make sure we pull from there too
             elif command.find("git push") != -1:
-                os.system("~/githelper/git-branch-tracker.sh")
+                os.system("git-branch-tracker.sh")
