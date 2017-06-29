@@ -4,6 +4,9 @@
 # More effective than permuting aliases!
 # For each letter in the word passed as the argument, performs an action (in
 # the order specified)
+#
+# Also supports git arguments, but if multiple actions are sepcified, the
+# arguments are only passed to the last action.
 
 import sys, os
 
@@ -25,22 +28,28 @@ if __name__ == '__main__':
     else:
         extraargs = ""
         if len(sys.argv) > 2:
-            if len(sys.argv[1]) != 1:
-                print "##### Cannot apply extra args since we got more than one action; exiting"
-                exit()
-            else:
-                extraargs = " ".join(sys.argv[2:])
-        for arg in list(sys.argv[1]):
+            extraargs = " ".join(sys.argv[2:])
+        for i, arg in enumerate(list(sys.argv[1])):
+
+            # Block force pushing to master; make them type the command out manually instead
             if arg == 'f':
                 gitbranch = os.popen("git rev-parse --abbrev-ref HEAD 2> /dev/null").read().strip()
                 if gitbranch == 'master':
-                    print "##### Bad monkey! Don't force push to master!"
+                    print "##### Don't force push to master!"
                     exit()
-            command = "{} {}".format(argmap[arg], extraargs)
+
+            command = argmap[arg]
+
+            # If this is the last action, add the extra args
+            if i == len(sys.argv[1]) - 1:
+                command += " {}".format(extraargs)
+
+            # Run the command
             print "##### Running Git command: {}".format(command)
             if os.system(command) != 0:
                 print "##### Git command failed: {}".format(command)
                 exit()
+
             # If we did a push, run the branch tracker to make sure we pull from there too
-            elif command.find("git push") != -1:
+            if command.find("git push") != -1:
                 os.system(os.path.join(sys.path[0], "git-branch-tracker.sh"))
