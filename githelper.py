@@ -17,6 +17,7 @@ if __name__ == '__main__':
         c="git commit -v",
         s="git stash --include-untracked",
         r="git fetch && git rebase remotes/origin/`git rev-parse --abbrev-ref HEAD`",
+        m="ORIGINAL_BRANCH=`git rev-parse --abbrev-ref HEAD`; git checkout ${GIT_MASTER_BRANCH_NAME:=master} && git pull && git checkout $ORIGINAL_BRANCH && git rebase ${GIT_MASTER_BRANCH_NAME} && git checkout ${GIT_MASTER_BRANCH_NAME} && git merge $ORIGINAL_BRANCH",
         p="git push",
         f="git push --force-with-lease",
         t="git push --tags"
