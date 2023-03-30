@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) < 2:
         for arg, command in argmap.iteritems():
-            print "{}\t{}".format(arg, command)
+            print("{}\t{}".format(arg, command))
     else:
         extraargs = ""
         if len(sys.argv) > 2:
@@ -36,7 +36,7 @@ if __name__ == '__main__':
             if arg == 'f':
                 gitbranch = os.popen("git rev-parse --abbrev-ref HEAD 2> /dev/null").read().strip()
                 if gitbranch == 'master':
-                    print "##### Don't force push to master!"
+                    print("##### Don't force push to master!")
                     exit()
 
             command = argmap[arg]
@@ -46,9 +46,9 @@ if __name__ == '__main__':
                 command += " {}".format(extraargs)
 
             # Run the command
-            print "##### Running Git command: {}".format(command)
+            print("##### Running Git command: {}".format(command))
             if os.system(command) != 0:
-                print "##### Git command failed: {}".format(command)
+                print("##### Git command failed: {}".format(command))
                 exit()
 
             # If we did a push, run the branch tracker to make sure we pull from there too
